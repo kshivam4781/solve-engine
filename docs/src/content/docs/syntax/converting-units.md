@@ -17,7 +17,14 @@ as Fahrenheit. The amount does not change, only the unit it is expressed in.
 1 hour to minutes // 60 minutes
 72F to C // 22.22 C
 20C in F // 68.00 F
+20°C in F // 68.00 F
+20C in °F // 68.00 °F
 ```
+
+The degree sign reads the same way, on either side of a conversion: `°C`,
+`°F`, `°K` and the precomposed `℃`/`℉` all name the unit their letter already
+does. The bare angle degree, `90°` with nothing after it, is a different unit
+(a plane angle) and is unaffected.
 
 A conversion between two different dimensions has no answer, so it is refused
 rather than guessed. The message names the dimensions rather than the units, so
