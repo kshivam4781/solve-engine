@@ -15,9 +15,13 @@ import { createFusedToken } from "@solve-js/normalizer/TokenNormalizer";
  * context in which this could be claiming something that was already spoken
  * for.
  *
- * Note this is the angle degree. Temperature is written `°C` and `°F`, which
- * lex as their own units already and are not touched, because the symbol is
- * followed by a letter there rather than standing alone.
+ * Note this is the angle degree, matched only when `°` stands alone: the
+ * lexer's identifier scan swallows the ASCII letters that immediately follow
+ * a non-ASCII character into the same token, so `°C` and `°F` never reach
+ * this rule as a bare `°` in the first place, they arrive as one IDENT
+ * spelled `°C`/`°F`. Retyping those (plus `°K` and the precomposed `℃`/`℉`)
+ * to the UNIT the conversion tables already hold for them is
+ * DegreeUnitSymbolNormalizerRule.ts, beside this rule.
  */
 export function degreeSymbolNormalizerRule(priority = 74): NormalizerRule {
 	return {
